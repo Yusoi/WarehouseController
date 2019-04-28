@@ -20,4 +20,12 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
+    <!-- Strings related to the main menu -->
+    <string name="main_menu_title">Main Menu</string>
+    <string name="scanner_button">QRCode Scanner</string>
+    <string name="change_box_button">Change Box</string>
+
+    <!-- Strings related to camera -->
+    <string name="click_camera">Click to identify the QRCode</string>
+
 </resources>

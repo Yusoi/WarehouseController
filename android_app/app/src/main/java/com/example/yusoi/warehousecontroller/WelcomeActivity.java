@@ -17,7 +17,7 @@ public class WelcomeActivity extends AppCompatActivity {
     // Called when the activity is first created.
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.WelcomeTheme);
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         mDetector = new GestureDetectorCompat(this, new MyGestureListener());

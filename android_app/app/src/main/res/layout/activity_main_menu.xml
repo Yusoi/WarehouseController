@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:id="@+id/title_main_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_menu_title"
+            android:textSize="@dimen/title_font_size"
+            android:textColor="@color/text_white"
+            android:textStyle="bold"
+            android:padding="20dp"/>
+
+    </LinearLayout>
+
+    <!-- Buttons -->
+
+    <LinearLayout
+        android:id="@+id/buttons_main_menu"
+        android:layout_below="@id/title_main_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false"
+        android:layout_margin="5dp">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/scanner_button"
+                android:text="@string/scanner_button"
+                android:layout_margin="5dp"
+                android:onClick="onClickScannerButton"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="fill"
+                android:text="@string/scanner_button"
+                android:layout_margin="5dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/change_box_button"
+                android:text="@string/change_box_button"
+                android:layout_margin="5dp"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="fill"
+                android:text="@string/change_box_button"
+                android:layout_margin="5dp"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_below="@id/buttons_main_menu"
+        android:id="@+id/welcome_message"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="10dp">
+    </TextView>
+
+</RelativeLayout>

@@ -18,7 +18,8 @@
             android:textSize="@dimen/title_font_size"
             android:textColor="@color/text_white"
             android:textStyle="bold"
-            android:padding="20dp"/>
+            android:padding="20dp"
+            />
 
     </LinearLayout>
 

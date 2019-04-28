@@ -146,7 +146,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private void attemptLogin() {
 
-        startActivity(new Intent(LoginActivity.this,MainActivity.class));
+        String username = "bernardosilva";
+
+        //Starts the main menu activity after successful login
+        Intent mainMenuOpener = new Intent(LoginActivity.this,MainMenuActivity.class);
+        mainMenuOpener.putExtra("USERNAME",username);
+        startActivity(mainMenuOpener);
 
         /*if (mAuthTask != null) {
             return;

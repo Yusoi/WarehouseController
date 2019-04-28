@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.camerakit.CameraKitView android:id="@+id/camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:keepScreenOn="true"
+        app:camera_flash="auto"
+        app:camera_facing="back"
+        app:camera_focus="continuous"
+        app:camera_permissions="camera"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:onClick="onClick"
+        />   <!-- keep screen awake while CameraKitView is active -->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/camera"
+        android:layout_marginBottom="50dp"
+        android:text="@string/click_camera"
+        android:background="@color/text_white"
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClick"/>
+
+
+</RelativeLayout>
