@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -29,6 +30,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,10 +67,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
 
+    //Authentication
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        // ...
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
+        SharedPreferences sp = getSharedPreferences("Login",MODE_PRIVATE);
+        String usernamePref = sp.getString("username",null);
+        String passwordPref = sp.getString("password",null);
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -93,6 +108,24 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser curUser = mAuth.getCurrentUser();
+        if(curUser != null)
+            mAuth.signOut();
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        //Logs out current user
+        FirebaseUser curUser = mAuth.getCurrentUser();
+        if(curUser != null)
+            mAuth.signOut();
     }
 
     private void populateAutoComplete() {

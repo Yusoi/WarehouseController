@@ -7,22 +7,17 @@
     android:orientation="vertical"
     >
 
-    <LinearLayout
+    <TextView
         android:id="@+id/title_main_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/main_menu_title"
-            android:textSize="@dimen/title_font_size"
-            android:textColor="@color/text_white"
-            android:textStyle="bold"
-            android:padding="20dp"/>
-
-    </LinearLayout>
+        android:text="@string/main_menu_title"
+        android:textSize="@dimen/title_font_size"
+        android:textColor="@color/text_white"
+        android:textStyle="bold"
+        android:background="@color/colorPrimary"
+        android:padding="20dp"
+        />
 
     <!-- Buttons -->
 
@@ -45,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:id="@+id/scanner_button"
-                android:text="@string/scanner_button"
+                android:text="@string/box_contents_button"
                 android:layout_margin="5dp"
                 android:onClick="onClickScannerButton"
                 />
@@ -54,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_gravity="fill"
-                android:text="@string/scanner_button"
+                android:text="@string/box_contents_id_button"
                 android:layout_margin="5dp"
                 />
 
@@ -70,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:id="@+id/change_box_button"
-                android:text="@string/change_box_button"
+                android:text="@string/edit_box_button"
                 android:layout_margin="5dp"
                 />
 
@@ -78,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_gravity="fill"
-                android:text="@string/change_box_button"
+                android:text="@string/edit_box_id_button"
                 android:layout_margin="5dp"
                 />
 

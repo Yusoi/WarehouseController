@@ -34,6 +34,7 @@ import java.util.List;
 public class QRCodeScannerActivity extends AppCompatActivity {
 
     private CameraKitView cameraKitView;
+    //private Thread qrcdThrd;
 
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
     static {
@@ -48,7 +49,30 @@ public class QRCodeScannerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrcode_scanner);
         cameraKitView = findViewById(R.id.camera);
+
+        /*
+        QRCodeDetection qrcDetection = new QRCodeDetection(cameraKitView);
+        qrcdThrd = new Thread(qrcDetection);
+
+        qrcdThrd.run();
+
+        try {
+            qrcdThrd.join();
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
+        */
+
     }
+
+    /*
+    @Override
+    public void onBackPressed(){
+        qrcdThrd.interrupt();
+    }
+    */
+
+
 
     public void onClick(View v){
         cameraKitView.captureImage(new  CameraKitView.ImageCallback() {
@@ -60,6 +84,8 @@ public class QRCodeScannerActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     public void qrCodeDetection(Bitmap bitmap){
 
@@ -82,16 +108,14 @@ public class QRCodeScannerActivity extends AppCompatActivity {
                         if(!barcodes.isEmpty()) {
                             Intent dataIntent = new Intent(QRCodeScannerActivity.this, QRCodeDataActivity.class);
 
-                            String dataString = "";
-
-                            for (FirebaseVisionBarcode f : barcodes) {
-                                dataString = dataString + f.getDisplayValue() + "»";
-                            }
+                            //Only get the first value
+                            String dataString = barcodes.get(0).getDisplayValue();
 
                             dataIntent.putExtra("DATA", dataString);
 
                             startActivity(dataIntent);
                         }
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -101,6 +125,7 @@ public class QRCodeScannerActivity extends AppCompatActivity {
                         // ...
                     }
                 });
+
 
     }
 
