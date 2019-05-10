@@ -27,32 +27,39 @@
 
     </LinearLayout>
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/content_table_ll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_weight=".30"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/content_table_ll"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/id_title"
-                android:padding="20dp"
-                android:textSize="20sp"/>
-            <TextView
-                android:id="@+id/id_tv"
-                android:layout_weight=".70"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:textSize="20sp"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight=".30"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/id_title"
+                    android:padding="20dp"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/id_tv"
+                    android:layout_weight=".70"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
         </LinearLayout>
-
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

@@ -21,7 +21,7 @@ public class QRCodeDataActivity extends AppCompatActivity {
 
         try {
             checksumVerifier(qrCodeString);
-            String titleString = "Box " + qrCodeString.split("::")[0];
+            String titleString = qrCodeString.split(" :: ")[0] + " contents:";
 
             TextView title = findViewById(R.id.title);
             title.setText(titleString);
@@ -42,19 +42,32 @@ public class QRCodeDataActivity extends AppCompatActivity {
             linearLayout.addView(tv);
             */
         }catch(InvalidBoxCodeException e){
-            String titleString = e.getMessage();
-            TextView tv = new TextView(this);
-
-            tv.setText(titleString);
-            tv.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            linearLayout.addView(tv);
+            TextView title = findViewById(R.id.title);
+            title.setText(e.getMessage());
         }
     }
+
 
     public void checksumVerifier(String qrCodeString) throws InvalidBoxCodeException {
+        try {
+            //Default qrCode format is "Box <BoxNumber> :: <ChecksumCode>"
+            int startingInt = Integer.parseInt(qrCodeString.split("Box ")[1].split(" :: ")[0]);
 
-        if(qrCodeString.equals("1")) {
-            throw new InvalidBoxCodeException("");
+            int code = startingInt + 50;
+            code = (int) Math.pow(code,2);
+            code *= 67;
+            code -= 30;
+
+            if(code != Integer.valueOf(qrCodeString.split(" :: ")[1])){
+                throw new InvalidBoxCodeException(String.valueOf(code));
+            }
+
+        }catch(NumberFormatException e){
+            throw new InvalidBoxCodeException("Invalid box code 2");
+        }catch(ArrayIndexOutOfBoundsException e){
+            throw new InvalidBoxCodeException("Invalid box code 3");
         }
+
     }
+
 }
